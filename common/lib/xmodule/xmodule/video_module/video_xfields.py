@@ -145,4 +145,5 @@ class VideoFields(object):
         display_name="Handout",
         scope=Scope.settings,
         help="Show a link beneath the video to allow students to download the handout",
+        default=''
     )

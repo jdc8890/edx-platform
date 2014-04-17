@@ -323,6 +323,11 @@ class VideoDescriptor(VideoFields, VideoStudioViewHandlers, TabsEditingDescripto
             ele.set('src', self.track)
             xml.append(ele)
 
+        if self.handout:
+            ele = etree.Element('handout')
+            ele.set('src', self.handout)
+            xml.append(ele)
+
         # sorting for easy testing of resulting xml
         for transcript_language in sorted(self.transcripts.keys()):
             ele = etree.Element('transcript')
@@ -424,6 +429,10 @@ class VideoDescriptor(VideoFields, VideoStudioViewHandlers, TabsEditingDescripto
         track = xml.find('track')
         if track is not None:
             field_data['track'] = track.get('src')
+
+        handout = xml.find('handout')
+        if handout is not None:
+            field_data['handout'] = handout.get('src')
 
         transcripts = xml.findall('transcript')
         if transcripts:
